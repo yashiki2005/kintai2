@@ -1,0 +1,43 @@
+{{left_sidebar_enabled,right_sidebar_enabled=False,('message' in globals())}}
+{{extend 'layout.html'}}
+{{block header}}
+    <header class="container-fluid background">
+      <div class="jumbotron text-center">
+        {{if response.title:}}
+        <h1>{{=response.title}}
+          <small>{{=response.subtitle or ''}}</small></h1>
+        {{pass}}
+      </div>
+    </header>
+{{end}}
+
+{{if 'message' in globals():}}
+<a href="http://localhost:8000/kintai/default/user/login">ログイン</a>
+勤怠管理システム
+<br>
+<hr>
+<table border="1" width="500" cellspacing="0" cellpadding="5" bordercolor="#333333">
+<tr>
+<th bgcolor="#EE0000"><font color="#FFFFFF">日時</font></th>
+<th bgcolor="#EE0000" width="150"><font color="#FFFFFF">出勤<font></th>
+<th bgcolor="#EE0000" width="200"><font color="#FFFFFF">退勤</font></th>
+</tr>
+<tr>
+<td bgcolor="#99CC00" align="right" nowrap>2016/1/4</td>
+<td bgcolor="#FFFFFF" valign="top" width="150">10:00</td>
+<td bgcolor="#FFFFFF" valign="top" width="200">16:00</td>
+</tr>
+<tr>
+<td bgcolor=#990000" align="right" nowrap>2016/1/6</td>
+<td bgcolor="#FFFFFF" valign="top" width ="150"><input value="出勤" type="submit"></input>
+</tr>
+</table>
+{{elif 'content' in globals():}}
+{{=content}}
+{{else:}}
+{{=BEAUTIFY(response._vars)}}
+{{pass}}
+
+{{block right_sidebar}}
+
+{{end}}
